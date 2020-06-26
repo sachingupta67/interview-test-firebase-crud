@@ -10,7 +10,7 @@ export const addUser = data => async dispatch => {
       .push()
       .set(data);
     dispatch(successResponseHandler(user.ADD_SUCCESS, 'success'));
-    dispatch(getRecords());
+    dispatch(getRecords()); //
     dispatch(loadingHandler(false));
   } catch (err) {
     dispatch(loadingHandler(false));

@@ -81,16 +81,20 @@ class AddEmployee extends React.Component {
   };
   submitDetails = () => {
     const {user, pic, email, cno, location} = this.state;
-    const data = {
-      user_name: user.trim(),
-      profile_pic: pic,
-      email: email,
-      contact_no: cno,
-      location: location,
-      created_at: Date.now(),
-    };
-    this.props.handler(false);
-    this.props.addUser(data);
+    if (pic) {
+      const data = {
+        user_name: user.trim(),
+        profile_pic: pic,
+        email: email,
+        contact_no: cno,
+        location: location,
+        created_at: Date.now(),
+      };
+      this.props.handler(false);
+      this.props.addUser(data);
+    } else {
+      Alert.alert('Please select image');
+    }
   };
   backHandler = () => {
     this.setState({active: 1});
